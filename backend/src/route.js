@@ -11,7 +11,7 @@ routes.post('/sessions', celebrate({
       username: Joi.string().required(),
       password: Joi.string().required(),
   })
-}), SessionController.create);  //the order of parameters here matters. validation must come first
+}), SessionController.create);
 
 routes.post('/user', celebrate({
   [Segments.BODY]: Joi.object().keys({
