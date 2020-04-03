@@ -1,8 +1,8 @@
 const express = require('express');
 const { celebrate, Segments, Joi } = require('celebrate');
 
-const SessionController = require('./controller/SessionController');
-const UserController = require('./controller/UserController');
+const SessionController = require('./controllers/SessionController');
+const UserController = require('./controllers/UserController');
 
 const routes = express.Router();
 
