@@ -10,7 +10,10 @@ exports.up = function(knex) {
     table.string('initials').notNullable;
     table.boolean('state').notNullable;
 
-});
+    table.integer('user_type_id').notNullable;
+    table.foreign('user_type_id').references('id').inTable('user_type');
+
+  });
 };
 
 exports.down = function(knex) {

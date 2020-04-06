@@ -3,6 +3,7 @@ const { celebrate, Segments, Joi } = require('celebrate');
 
 const SessionController = require('./controllers/SessionController');
 const UserController = require('./controllers/UserController');
+const ProfileController = require('./controllers/ProfileController');
 
 const routes = express.Router();
 
@@ -12,6 +13,12 @@ routes.post('/sessions', celebrate({
       password: Joi.string().required(),
   })
 }), SessionController.create);
+
+routes.get('/profile', celebrate({
+  [Segments.HEADERS]: Joi.object({
+      authorization: Joi.string().required(),
+  }).unknown(),
+}), ProfileController.index);
 
 routes.post('/user', celebrate({
   [Segments.BODY]: Joi.object().keys({

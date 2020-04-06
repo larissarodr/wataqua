@@ -7,7 +7,7 @@ module.exports = {
         const user = await connection('user')
                     .where('username', username)
                     .where('password', password)
-                    .select('fullname')
+                    .select('*')
                     .first();
         
         if (!user) {
