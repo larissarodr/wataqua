@@ -20,6 +20,9 @@
 }
 
 .login-container section.form form h1 {
+  font: 400 16px Comfortaa, sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
   font-size: 32px;
   margin-bottom: 32px;
 }

@@ -1,0 +1,45 @@
+footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background-color: #003673;
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+
+footer .copyright {
+    width: 80%;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+footer .copyright p {
+  padding-left: 5%;
+  color: white;
+  font-size: 1em;
+  font-weight: bold; 
+  line-height: 40px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+footer .social {
+  display: flex;
+  margin-left: auto;
+  width: 20%;
+  float: right;
+}
+
+footer .social a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold; 
+  font-size: 1em;
+}
+
+footer .social a svg {
+  margin-right: 8px;
+}
