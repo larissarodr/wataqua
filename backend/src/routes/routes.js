@@ -3,6 +3,7 @@ const { celebrate, Segments, Joi } = require('celebrate');
 
 const SessionController = require('./controllers/SessionController');
 const UserController = require('./controllers/UserController');
+const UserTypeController = require('./controllers/UserTypeController');
 const ProfileController = require('./controllers/ProfileController');
 
 const routes = express.Router();
@@ -28,7 +29,18 @@ routes.post('/user', celebrate({
       fullname: Joi.string().required(),
       initials: Joi.string().required(),
       state: Joi.boolean().required(),
+      user_type_id: Joi.number().required()
   })
 }),  UserController.create);
+
+routes.get('/user', UserController.index);
+
+routes.post('/user_type', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+      description: Joi.string().required()
+  })
+}),  UserTypeController.create);
+
+routes.get('/user_type', UserTypeController.index);
 
 module.exports = routes;
