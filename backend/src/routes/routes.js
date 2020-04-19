@@ -6,6 +6,7 @@ const UserController = require('./controllers/UserController');
 const UserTypeController = require('./controllers/UserTypeController');
 const ProfileController = require('./controllers/ProfileController');
 const PermissionsController = require('./controllers/PermissionsController');
+const StocksController = require('./controllers/StocksController');
 
 const routes = express.Router();
 
@@ -58,5 +59,12 @@ routes.post('/permissions', celebrate({
 
 routes.get('/permissions', PermissionsController.indexAll);
 routes.delete('/permissions/:id', PermissionsController.delete);
+
+
+routes.post('/stocks', StocksController.create); //TO-DO NEED TO ADD VALIDATION HERE
+
+routes.get('/stocks', StocksController.indexAll);
+routes.delete('/stocks/:id', StocksController.delete);
+
 
 module.exports = routes;
