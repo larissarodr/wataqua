@@ -18,7 +18,7 @@
 }
 
 .login-container section.form img {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .login-container section.form form {
@@ -31,4 +31,28 @@
   font-weight: 800;
   font-size: 32px;
   margin-bottom: 32px;
+}
+
+.login-container section.form form h3 {
+  margin-top: 20px;
+  font: 400 16px Comfortaa, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+.new-account {
+  color: #003673;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.new-account svg {
+  margin-right: 8px;
+}
+
+.new-account:hover {
+  opacity: 0.8;
 }

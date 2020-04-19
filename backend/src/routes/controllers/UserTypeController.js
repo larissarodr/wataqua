@@ -11,8 +11,19 @@ module.exports = {
     },
 
     async index(request, response){
-        const user_types = await connection('user_type')
+        var user_types = null;
+
+        const{ is_admin } = request.params;
+        if(is_admin == true){
+            user_types = await connection('user_type')
+                            .where('description','admin')
                             .select('*');
+        } else  {
+            user_types = await connection('user_type')
+                            .whereNot('description','admin')
+                            .select('*');
+        }
+        
 
         return response.json(user_types);
     }

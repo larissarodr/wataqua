@@ -41,6 +41,6 @@ routes.post('/user_type', celebrate({
   })
 }),  UserTypeController.create);
 
-routes.get('/user_type', UserTypeController.index);
+routes.get('/user_type/:is_admin', UserTypeController.index);
 
 module.exports = routes;

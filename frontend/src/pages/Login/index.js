@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -47,6 +47,7 @@ export default function Login(){
                             onChange={e=> setPassword(e.target.value)}
                         />
                         <button className="button" type="submit">Submit</button>
+                        <h3>Not a member yet? <Link className="new-account" to="/newuser">Sign up</Link></h3>
                     </form>
                 </section>
             </div>

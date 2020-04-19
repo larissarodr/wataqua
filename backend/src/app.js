@@ -12,6 +12,18 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+function logRequests(request, response, next){ //middleware
+  const { method, url } = request;
+
+  const logLabel = `[${method.toUpperCase()}] ${url}`;
+  console.time(logLabel);
+  
+  next();
+
+  console.timeEnd(logLabel);
+}
+
+app.use(logRequests);
 app.use(helmet());
 app.use(express.json());
 app.use(routes);

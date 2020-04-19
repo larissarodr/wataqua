@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Login from './pages/Login';
+import NewUser from './pages/NewUser';
 import Profile from './pages/Profile';
 import Stocks from './pages/Stocks';
 import Experiments from './pages/Experiments';
@@ -11,7 +12,8 @@ export default function Routes(){
     return (
         <BrowserRouter>
           <Switch>
-            <Route path="/" exact component={Login}/>  
+            <Route path="/" exact component={Login}/>
+            <Route path="/newuser" exact component={NewUser}/>
             <Route path="/profile"component={Profile}/>
             <Route path="/stocks"component={Stocks}/>
             <Route path="/experiments"component={Experiments}/>
