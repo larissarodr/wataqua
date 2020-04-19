@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -19,18 +19,14 @@ export default function NewUser(){
   const [user_type_id, setUser_type_id] = useState('');
   const history = useHistory();
 
+  useEffect(() => {
+    api.get('user_type/0').then(response => {
+      setUser_type_id(response.data[0].id);
+    })
+}, []);
+
   async function handleNewUser(e){
     e.preventDefault();
-
-    try{
-      const response = await api.get('user_type/0');
-      setUser_type_id(response.data[0].id);
-    } catch (err) {
-      alert('Error finding appropriate user type.');
-      return;
-    }
-
-    setState(true);
 
     try{
         await api.post('user', { 
@@ -48,65 +44,66 @@ export default function NewUser(){
         alert('Error creating user. Try again.');
         return;
     }
-    alert('User successfully created!');
-}
+  }
+  return (
+      <>
+        <div className="register-container">
+            <div className="content">
+              <section>
+                  <img src={logoImg} alt="WatAqua"/>
+                  <h1>Registration</h1>
+                  <p>Create your account and sign in.</p>
+                  <p>Initials must be unique within your organization.</p>
 
-    return (
-        <>
-            <div className="register-container">
-                <div className="content">
-                  <section>
-                      <img src={logoImg} alt="WatAqua"/>
-                      <h1>Registration</h1>
-                      <p>Create your account and sign in.</p>
-                      <p>Initials must be unique within your organization.</p>
+                  <Link className="back-link" to="/">
+                      <FiArrowLeft size={16} color="#003673"/>
+                      Login
+                  </Link>
 
-                      <Link className="back-link" to="/">
-                          <FiArrowLeft size={16} color="#003673"/>
-                          Login
-                      </Link>
+              </section>
+                <form onSubmit={handleNewUser}>
+                  <input 
+                      placeholder="Username"
+                      value={username}
+                      onChange={e=> {
+                        setUsername(e.target.value)
+                        setState(true);}
+                      }
+                  />
 
-                  </section>
-                    <form onSubmit={handleNewUser}>
-                      <input 
-                          placeholder="Username"
-                          value={username}
-                          onChange={e=> setUsername(e.target.value)}
-                      />
+                  <input 
+                      placeholder="Password"
+                      type="password"
+                      value={password}
+                      onChange={e=> setPassword(e.target.value)}
+                  />
 
-                      <input 
-                          placeholder="Password"
-                          type="password"
-                          value={password}
-                          onChange={e=> setPassword(e.target.value)}
-                      />
+                  <input 
+                      placeholder="Email"
+                      value={email}
+                      onChange={e=> setEmail(e.target.value)}
+                  />
 
-                      <input 
-                          placeholder="Email"
-                          value={email}
-                          onChange={e=> setEmail(e.target.value)}
-                      />
+                  <div className="input-group">
+                    <input 
+                        placeholder="Full Name"
+                        value={fullname}
+                        onChange={e=> setFullname(e.target.value)}
+                        />
 
-                      <div className="input-group">
-                        <input 
-                            placeholder="Full Name"
-                            value={fullname}
-                            onChange={e=> setFullname(e.target.value)}
-                            />
+                    <input 
+                        placeholder="Initials"
+                        style={{ width: 115 }}
+                        value={initials}
+                        onChange={e=> setInitials(e.target.value)}
+                        />
+                  </div>
 
-                        <input 
-                            placeholder="Initials"
-                            style={{ width: 115 }}
-                            value={initials}
-                            onChange={e=> setInitials(e.target.value)}
-                            />
-                      </div>
-
-                      <button className="button" type="submit">Submit</button>
-                    </form>
-                </div>
+                  <button className="button" type="submit">Submit</button>
+                </form>
             </div>
-            <Footer/>
-        </>
-    );
+        </div>
+        <Footer/>
+    </>
+  );
 }

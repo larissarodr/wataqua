@@ -2,6 +2,7 @@ const connection = require('../../database/connection');
 
 module.exports = {
     async create(request, response){
+        
         const { username, password, email, fullname, initials, state, user_type_id } = request.body;
         
         const user_type = await connection('user_type')
@@ -32,5 +33,13 @@ module.exports = {
                             .select('*');
 
         return response.json(users);
+    },
+
+    async delete(request, response){
+        const{ id } = request.params;
+        
+        await connection('user').where('id', id).delete();
+
+        return response.status(204).send();
     }
 };

@@ -14,7 +14,6 @@ app.use(cors({
 
 function logRequests(request, response, next){ //middleware
   const { method, url } = request;
-
   const logLabel = `[${method.toUpperCase()}] ${url}`;
   console.time(logLabel);
   

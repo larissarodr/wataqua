@@ -35,6 +35,8 @@ routes.post('/user', celebrate({
 
 routes.get('/user', UserController.index);
 
+routes.delete('/user/:id', UserController.delete);
+
 routes.post('/user_type', celebrate({
   [Segments.BODY]: Joi.object().keys({
       description: Joi.string().required()

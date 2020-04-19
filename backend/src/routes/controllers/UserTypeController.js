@@ -17,11 +17,11 @@ module.exports = {
         if(is_admin == true){
             user_types = await connection('user_type')
                             .where('description','admin')
-                            .select('*');
+                            .select('id');
         } else  {
             user_types = await connection('user_type')
                             .whereNot('description','admin')
-                            .select('*');
+                            .select('id');
         }
         
 
