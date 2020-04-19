@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Stocks from './pages/Stocks';
 import Experiments from './pages/Experiments';
 import Tanks from './pages/Tanks';
+import UserSettings from './pages/UserSettings';
 
 export default function Routes(){
     return (
@@ -18,6 +19,7 @@ export default function Routes(){
             <Route path="/stocks"component={Stocks}/>
             <Route path="/experiments"component={Experiments}/>
             <Route path="/tanks"component={Tanks}/>
+            <Route path="/userSettings"component={UserSettings}/>
           </Switch>
         </BrowserRouter>
     );

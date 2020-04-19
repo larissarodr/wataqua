@@ -23,6 +23,7 @@ export default function Header(){
           <li><Link to="/stocks">Stock</Link></li>
           <li><Link to="/experiments">Experiments</Link></li>
           <li><Link to="/tanks">Tanks</Link></li>
+          <li><Link to="/userSettings">User Settings</Link></li>
         </ul>
         <button onClick={handleLogout} type="button">
           <FiLogOut size={18} color="#003673"/>

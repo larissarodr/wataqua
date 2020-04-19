@@ -5,6 +5,7 @@ const SessionController = require('./controllers/SessionController');
 const UserController = require('./controllers/UserController');
 const UserTypeController = require('./controllers/UserTypeController');
 const ProfileController = require('./controllers/ProfileController');
+const PermissionsController = require('./controllers/PermissionsController');
 
 const routes = express.Router();
 
@@ -43,6 +44,19 @@ routes.post('/user_type', celebrate({
   })
 }),  UserTypeController.create);
 
-routes.get('/user_type/:is_admin', UserTypeController.index);
+routes.get('/user_type/:is_admin', UserTypeController.indexByAdmin);
+routes.get('/user_type', UserTypeController.indexAll);
+routes.delete('/user_type/:id', UserTypeController.delete);
+
+routes.post('/permissions', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+      description: Joi.string().required(),
+      user_type_id: Joi.number().required(),
+      allow: Joi.boolean().required()
+  })
+}),  PermissionsController.create);
+
+routes.get('/permissions', PermissionsController.indexAll);
+routes.delete('/permissions/:id', PermissionsController.delete);
 
 module.exports = routes;
