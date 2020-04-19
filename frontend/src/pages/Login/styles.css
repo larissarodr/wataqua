@@ -3,20 +3,26 @@
   max-width: 1120px;
   height: 100vh;
   margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
+  text-align: center;
 }
 
 .login-container section.form {
   width: 100%;
   max-width: 350px;
   margin: 30px;
+  text-align: center;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-container section.form img {
+  margin-top: 70px;
 }
 
 .login-container section.form form {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .login-container section.form form h1 {

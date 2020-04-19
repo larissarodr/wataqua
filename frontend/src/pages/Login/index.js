@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import './styles.css';
 
+import Footer from '../../components/Footer';
 import api from '../../services/api';
 import logoImg from '../../assets/logo.png';
 
@@ -16,7 +17,7 @@ export default function Login(){
 
         try{
             const response = await api.post('sessions', { username, password });
-            console.log(response.data);
+            
             localStorage.setItem('fullname', response.data.fullname);
             localStorage.setItem('username', response.data.username);
             history.push('profile');
@@ -26,27 +27,30 @@ export default function Login(){
     }
 
     return (
-        <div className="login-container">
-            <section className="form">
-                <img src={logoImg} alt="WatAqua"/>
-                <form onSubmit={handleLogin}>
-                    <h1>Login</h1>
+        <>
+            <div className="login-container">
+                <section className="form">
+                    <img src={logoImg} alt="WatAqua"/>
+                    <form onSubmit={handleLogin}>
+                        <h1>Login</h1>
 
-                    <input 
-                        placeholder="Username"
-                        value={username}
-                        onChange={e=> setUsername(e.target.value)}
-                    />
+                        <input 
+                            placeholder="Username"
+                            value={username}
+                            onChange={e=> setUsername(e.target.value)}
+                        />
 
-                    <input 
-                        placeholder="Password"
-                        type="password"
-                        value={password}
-                        onChange={e=> setPassword(e.target.value)}
-                    />
-                    <button className="button" type="submit">Submit</button>
-                </form>
-            </section>
-        </div>
+                        <input 
+                            placeholder="Password"
+                            type="password"
+                            value={password}
+                            onChange={e=> setPassword(e.target.value)}
+                        />
+                        <button className="button" type="submit">Submit</button>
+                    </form>
+                </section>
+            </div>
+            <Footer/>
+        </>
     );
 }
