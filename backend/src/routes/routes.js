@@ -61,7 +61,39 @@ routes.get('/permissions', PermissionsController.indexAll);
 routes.delete('/permissions/:id', PermissionsController.delete);
 
 
-routes.post('/stocks', StocksController.create); //TO-DO NEED TO ADD VALIDATION HERE
+routes.post('/stocks', celebrate({
+  [Segments.BODY] : Joi.object().keys({
+    id: Joi.string().required(),
+    name: Joi.string().required(),
+    setup_date: Joi.date().required(),
+    from_wild: Joi.boolean().required(),
+    collection_date: Joi.date(),
+    collection_location: Joi.date(),
+    collection_details: Joi.string(),
+    date_of_birth: Joi.date(),
+    has_parents: Joi.boolean().required(),
+    mom_id: Joi.string(),
+    dad_id: Joi.string(),
+    responsible_user_id: Joi.number().required(),
+    relevance: Joi.string(),
+    comment: Joi.string(),
+    genotype: Joi.string(),
+    phenotype: Joi.string(),
+    number_of_males: Joi.number(),
+    number_of_females: Joi.number(),
+    number_of_hermaphrodites: Joi.number(),
+    number_of_juveniles: Joi.number(),
+    has_dna_sample: Joi.boolean().required(),
+    dna_sample_details: Joi.string(),
+    has_other_sample: Joi.boolean().required(),
+    other_sample_details: Joi.string(),
+    amount_founder_fish: Joi.number(),
+    last_check_date: Joi.date(),
+    last_check_user_id: Joi.number(),
+    /*photo1: Joi.blob(),
+    photo2: Joi.blob() TODO Validate blob?*/
+  })
+}), StocksController.create);
 
 routes.get('/stocks', StocksController.indexAll);
 routes.delete('/stocks/:id', StocksController.delete);
