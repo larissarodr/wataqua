@@ -68,7 +68,11 @@ module.exports = {
         var stocks = null;
 
         stocks = await connection('stocks')
-                    .select('*');
+                    .join('user as a', 'a.id', '=', 'responsible_user_id')
+                    .join('user as b', 'b.id', '=', 'last_check_user_id')
+                    .select(['stocks.*',
+                            'a.username as responsible_user_username', 
+                            'b.username as last_check_user_username']);
        
         return response.json(stocks);
     },

@@ -1,0 +1,25 @@
+.flatTable {
+
+  width:90%;
+  min-width:500px;
+  border-collapse:collapse;  
+  font-weight:bold;
+  color:#6b6b6b;
+}
+
+.titleTr {
+  height:70px;  
+  color:#f6f3f7; 
+  background:#6b6b6b;  
+  border:0px solid;
+}
+.flatTable .bodyTr{
+  height:50px;
+  background:#f6f3f7;
+  border-bottom:rgba(0,0,0,.05) 1px solid;
+}
+
+.flatTable td{    
+  box-sizing:border-box;
+  padding-left:30px;
+}

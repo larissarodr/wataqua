@@ -35,8 +35,18 @@ module.exports = {
         return response.json(users);
     },
 
+    async indexById(request, response){
+        const { id } = request.params;
+        const user = await connection('user')
+                            .where('id', id)
+                            .select('*')
+                            .first();
+
+        return response.json(user);
+    },
+
     async delete(request, response){
-        const{ id } = request.params;
+        const { id } = request.params;
         
         await connection('user').where('id', id).delete();
 

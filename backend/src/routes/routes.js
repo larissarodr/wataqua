@@ -37,6 +37,8 @@ routes.post('/user', celebrate({
 
 routes.get('/user', UserController.index);
 
+routes.get('/user/:id', UserController.indexById);
+
 routes.delete('/user/:id', UserController.delete);
 
 routes.post('/user_type', celebrate({
@@ -88,8 +90,8 @@ routes.post('/stocks', celebrate({
     has_other_sample: Joi.boolean().required(),
     other_sample_details: Joi.string(),
     amount_founder_fish: Joi.number(),
-    last_check_date: Joi.date(),
-    last_check_user_id: Joi.number(),
+    last_check_date: Joi.date().required(),
+    last_check_user_id: Joi.number().required(),
     /*photo1: Joi.blob(),
     photo2: Joi.blob() TODO Validate blob?*/
   })
